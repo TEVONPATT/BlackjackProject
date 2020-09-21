@@ -19,5 +19,10 @@ public class Player {
 		bJackHand.toString();
 		System.out.println("Player Black Jack Hand: " + bJackHand.toString());
 	}
+
+	public int getValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

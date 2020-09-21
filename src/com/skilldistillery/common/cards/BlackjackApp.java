@@ -1,5 +1,7 @@
 package com.skilldistillery.common.cards;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Scanner;
 
 public class BlackjackApp {
@@ -89,14 +91,27 @@ public class BlackjackApp {
 		dealer.dealCardToPlayer(player);
 		dealer.dealCardToPlayer(player);
 		player.showCard();
-		System.out.println("");
+		System.out.println(((Player) player).getValue());
 
 		dealer.dealCardToDealer(dealer);
 		dealer.dealCardToDealer(dealer);
 //		dealer.dealerFaceUpCard();
 		dealer.dealerCards();
 		
+		int playerValue = ((Player) player).getValue();
+		int dealerValue = ((Dealer) dealer).getValue();
+		
+		while (playerValue < 21) {
+				if (playerValue < dealerValue) {
+		System.out.println("Select 1 to hit or select 2 to stay");
 		keepPlayingOrNot();
+				} else if(playerValue > dealerValue) {
+					System.out.println("Youw Win!");
+				}else if(playerValue == dealerValue) {
+					System.out.println("");
+				}
+				
+		}
 //		int i = 0;
 //		if(player(i) < dealer.dealerCards() ) {
 //			
@@ -108,14 +123,15 @@ public class BlackjackApp {
 		
 	}
 	public void keepPlayingOrNot() {
+//		System.out.println("Select 1 to hit or select 2 to stay");
 		int n = scan.nextInt();
-		System.out.println("Select 1 to hit or select 2 to stay");
 		
+//		int playerValue = ((Player) player).getValue();
+//		int dealerValue = ((Dealer) dealer).getValue();
 		switch(n) {
 		case 1: 
-			while(player.indexOf(player.showCard()) < 2) { //How to loop through and add another card.
-				dealer.dealCardToPlayer(player);
-			}
+			 //How to loop through and add another card.
+			dealer.dealCardToPlayer(player);
 		case 2:
 			player.showCard();
 		}
