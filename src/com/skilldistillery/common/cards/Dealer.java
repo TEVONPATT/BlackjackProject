@@ -20,12 +20,16 @@ public class Dealer extends Player{
 	public void shuffle() {
 		deck.shuffle();
 	}
-	
 
-//	public void dealerHand(Card[] cards) {
-//		for(int i = 0; i < cards.length; i++) {
-//			System.out.println(cards[i]);
-//		}
+	public void dealerCards() {
+		System.out.println("Dealer hand: " + bJackHand.getHandValue());
+	}
+	public void dealerFaceUpCard() {
+		
+		System.out.println("Dealer hand: " + bJackHand.getHandValue() +  " Dealer card faced up: " +
+	bJackHand.cards.get(1).getValue());
+	}	
+	
 		
 		
 //		cards = new ArrayList<>(2);
@@ -33,6 +37,5 @@ public class Dealer extends Player{
 //			for (Rank rank : Rank.values()) {
 //				cards.add(new Card(suit, rank));
 //			}
-//		}
-	}
+//		
 }
