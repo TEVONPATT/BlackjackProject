@@ -3,14 +3,20 @@ package com.skilldistillery.common.cards;
 import java.util.Scanner;
 
 public class BlackjackApp {
-public static void main(String[] args) {
+	Dealer dealer = new Dealer();
+	Player player = new Player();
 	Scanner scan = new Scanner(System.in);
-	menu();
 	int user = scan.nextInt();
-	int n = 0;
+public static void main(String[] args) {
+	Scanner scanner = new Scanner(System.in);
+	BlackjackApp bJackApp = new BlackjackApp();
+	bJackApp.menu();
+	int user2 = scanner.nextInt();
+	bJackApp.user2();
+	scan.next();
 	switch (user) {
 	case 1:
-		startGame();
+		bJackApp.startGame();
 		System.out.println();
 		
 		break;
@@ -22,9 +28,10 @@ public static void main(String[] args) {
 		System.out.println("Not a valid option.");
 		break;
 	}
+	
 }
 
-public static void menu() {
+public void menu() {
 	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	System.out.println("[]                                     []");
 	System.out.println("[] To play select 1. To exit select 2. []");
@@ -50,7 +57,7 @@ public static void menu() {
 //	}
 }
 
-private static void startGame() {
+public void startGame() {
 	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	System.out.println("[]                                     []");
 	System.out.println("[]        1) Deal cards                []");
@@ -58,10 +65,11 @@ private static void startGame() {
 	System.out.println("[]                                     []");
 	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	
-	int n = 0;
+	int n = scan.nextInt(); // TODO change to user input
 	switch (n) {
 	case 1:
-		Dealer.dealCard();
+		System.out.println();
+		dealer.dealCard(player);
 	case 2:
 		System.out.println("See you later!");
 		break;
