@@ -1,8 +1,8 @@
 package com.skilldistillery.common.cards;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Collections;
+//import java.util.List;
 
 public class Dealer extends Player{
 	private Deck deck;
@@ -11,23 +11,36 @@ public class Dealer extends Player{
 	public Dealer() {
 		deck = new Deck();
 	}
-	
-	
-	public void dealCard(Player player) {
+//	public void add_Card_To_Hand(Card newCard) {
+//		bJackHand.addCard(newCard);
+//		bJackHand.getHandValue();
+//	}
+		
+//	
+	public void dealCardToPlayer(Player player) {
 		Card newCard = deck.dealCard();
 		player.add_Card_To_Hand(newCard);
+	}
+	public void dealCardToDealer(Dealer dealer) {
+		Card newCard = deck.dealCard();
+		dealer.add_Card_To_Hand(newCard);
 	}
 	public void shuffle() {
 		deck.shuffle();
 	}
+	public void showCard() {
+		bJackHand.toString();
+		System.out.println("Dealer Black Jack Hand: " + bJackHand.toString());
+	}
 
 	public void dealerCards() {
-		System.out.println("Dealer hand: " + bJackHand.getHandValue());
+		bJackHand.toString();
+		System.out.println("Dealer hand: " + bJackHand.toString());
 	}
 	public void dealerFaceUpCard() {
 		
 		System.out.println("Dealer hand: " + bJackHand.getHandValue() +  " Dealer card faced up: " +
-	bJackHand.cards.get(1).getValue());
+	bJackHand.cards.get(1).toString());
 	}	
 	
 		

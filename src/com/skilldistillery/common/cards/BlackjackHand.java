@@ -8,7 +8,7 @@ public class BlackjackHand extends Hand {
 	}
 
 	public int getHandValue() {
-		int bustValue = 21;
+		int bustValue = 22;
 		int value = 0;
 		for (Card card : cards) {
 			value += card.getValue();
