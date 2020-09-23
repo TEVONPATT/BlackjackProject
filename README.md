@@ -1,6 +1,6 @@
 # Project Overview
 
-## This game operates by usage of different methods and switch statements to ensure that user choices are stored and the game functions properly.
+### This game operates by usage of different methods and switch statements to ensure that user choices are stored and the game functions properly.
 
 ### The game begins after the player decides to deal cards.
 
