@@ -18,6 +18,7 @@ public class Player {
 	public void showCard() {
 //		bJackHand.toString();
 		System.out.println("Player Black Jack Hand: " + bJackHand.toString());
+		System.out.println("Your card value: " + bJackHand.getHandValue());
 	}
 
 	public int getValue() {

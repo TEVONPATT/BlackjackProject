@@ -87,21 +87,22 @@ public class BlackjackApp {
 	// TODO Stop show dealer value before end of game
 	// TODO Show value of player hand at end of game.
 	// TODO exception out of bounds when dealer has more than 21.
-	
+
 	public void gamePlay() {
 //		BlackjackHand bJackHand = new BlackjackHand();
 //		dealer.shuffle();
-
+		while(player.getValue() == 0) {
 		dealer.dealCardToPlayer(player);
 		dealer.dealCardToPlayer(player);
 		player.showCard();
-		System.out.println("Your card value: " + player.getValue());
+//		System.out.println("Your card value: " + player.getValue());
 		System.out.println(" ");
 
 		dealer.dealCardToDealer(dealer);
 		dealer.dealCardToDealer(dealer);
 		dealer.dealerFaceUpCard();
 		System.out.println(" ");
+		}
 //		System.out.println(keepPlayingOrNot());
 //		int playerValue = (player).getValue();
 //		int dealer.get = ((Dealer) dealer).getValue();
@@ -119,50 +120,92 @@ public class BlackjackApp {
 				dealer.dealCardToPlayer(player);
 				player.showCard();
 				dealer.dealerFaceUpCard();
+//				dealerLoses();
 				break OUTER;
 			case 2:
 				player.showCard();
 				dealer.dealerFaceUpCard();
-				break OUTER; 
+				break OUTER;
 			default:
 				System.out.println("Not a valid option");
 				break;
 			}
 		}
-			if (player.getValue() > 21) {
-				
-				System.out.println("!!BUST!!");
-			}
+		dealerWins();
+		playerWins();
+//		if (player.getValue() > 21) {
+//
+//			System.out.println("!!BUST!!");
+//			System.out.println("You Lose!");
+//			System.out.println(" ");
+//			player.showCard();
+//			System.out.println(player.getValue());
+//			dealer.dealerCards();
+//		}
+
+//		while (dealer.getValue() <= 16) {
+//			player.showCard();
+//			System.out.println(player.getValue());
+//
+//			dealer.dealCardToDealer(dealer);
+//			dealer.dealerFaceUpCard();
+//			if (player.getValue() < dealer.getValue()) {
+//				System.out.println("You Lose!");
+//				player.showCard();
+//				System.out.println(player.getValue());
+//				dealer.dealerCards();
+//
+//			} else if (dealer.getValue() == 21) {
+//				System.out.println("You Lose!");
+//				player.showCard();
+//				System.out.println(player.getValue());
+//				dealer.dealerCards();
+//			} else if (player.getValue() > dealer.getValue()) {
+//				System.out.println("You Win!");
+//				player.showCard();
+//				System.out.println(player.getValue());
+//				dealer.dealerCards();
+//			}
+		}
 
 	
-		while (dealer.getValue() <= 16) {
-			player.showCard();
-			System.out.println(player.getValue());
-			
-			dealer.dealCardToDealer(dealer);
-			dealer.dealerFaceUpCard();
-		if (player.getValue() < dealer.getValue() || dealer.getValue() == 21) {
+
+	public void dealerWins() {
+		if (player.getValue() < dealer.getValue()) {
 			System.out.println("You Lose!");
 			player.showCard();
 			System.out.println(player.getValue());
 			dealer.dealerCards();
 
-		} else if(dealer.getValue() == 21) {
+		} else if (dealer.getValue() == 21) {
 			System.out.println("You Lose!");
+			player.showCard();
+			System.out.println(player.getValue());
+			dealer.dealerCards();
+		} else if (player.getValue() > 21) {
+			System.out.println("!!BUST!!");
+			System.out.println("You Lose!");
+			System.out.println(" ");
 			player.showCard();
 			System.out.println(player.getValue());
 			dealer.dealerCards();
 		}
-		else if (player.getValue() > dealer.getValue() || dealer.getValue() > 21) {
+	}
+
+	public void playerWins() {
+		if (player.getValue() > dealer.getValue()) {
+			System.out.println("You Win!");
+			player.showCard();
+			System.out.println(player.getValue());
+			dealer.dealerCards();
+		} else if (dealer.getValue() > 21) {
+			System.out.println("!!DEALER BUST!!");
 			System.out.println("You Win!");
 			player.showCard();
 			System.out.println(player.getValue());
 			dealer.dealerCards();
 		}
 	}
-		
-}
-
 //	public void keepPlayingOrNot() {
 ////		System.out.println("Select 1 to hit or select 2 to stay");
 //		int playerValue = ((Player) player).getValue();
