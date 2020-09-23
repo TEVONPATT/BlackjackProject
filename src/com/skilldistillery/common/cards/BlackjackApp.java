@@ -51,6 +51,7 @@ public class BlackjackApp {
 			break;
 		case 2:
 			System.out.println("See you later!");
+			break;
 
 		default:
 			System.out.println("Not a valid option.");
@@ -82,61 +83,120 @@ public class BlackjackApp {
 			break;
 		}
 	}
-	//TODO find a way to compare dealer and player hand/ loop so that the cards are added automatically.
-	//TODO 
-	public void gamePlay() {  
+
+	// TODO Stop show dealer value before end of game
+	// TODO Show value of player hand at end of game.
+	// TODO exception out of bounds when dealer has more than 21.
+	
+	public void gamePlay() {
 //		BlackjackHand bJackHand = new BlackjackHand();
 //		dealer.shuffle();
-		
+
 		dealer.dealCardToPlayer(player);
 		dealer.dealCardToPlayer(player);
 		player.showCard();
-		System.out.println(((Player) player).getValue());
+		System.out.println("Your card value: " + player.getValue());
+		System.out.println(" ");
 
 		dealer.dealCardToDealer(dealer);
 		dealer.dealCardToDealer(dealer);
-//		dealer.dealerFaceUpCard();
-		dealer.dealerCards();
-		
-		int playerValue = ((Player) player).getValue();
-		int dealerValue = ((Dealer) dealer).getValue();
-		
-		while (playerValue < 21) {
-				if (playerValue < dealerValue) {
-		System.out.println("Select 1 to hit or select 2 to stay");
-		keepPlayingOrNot();
-				} else if(playerValue > dealerValue) {
-					System.out.println("Youw Win!");
-				}else if(playerValue == dealerValue) {
-					System.out.println("");
-				}
-				
-		}
-//		int i = 0;
-//		if(player(i) < dealer.dealerCards() ) {
-//			
-//		}
-		
-//		if(dealer.dealerCards().compareTo(player.showCard()) && player.showCard().compareTo(21)) {
-//			System.out.println("YOU WIN!");
-//		}
-		
-	}
-	public void keepPlayingOrNot() {
-//		System.out.println("Select 1 to hit or select 2 to stay");
-		int n = scan.nextInt();
-		
+		dealer.dealerFaceUpCard();
+		System.out.println(" ");
+//		System.out.println(keepPlayingOrNot());
+//		int playerValue = (player).getValue();
+//		int dealer.get = ((Dealer) dealer).getValue();
+//		
+//	
+		OUTER: if (player.getValue() < 21) {
+			System.out.println("Select 1 to hit or select 2 to stay");
+
 //		int playerValue = ((Player) player).getValue();
 //		int dealerValue = ((Dealer) dealer).getValue();
-		switch(n) {
-		case 1: 
-			 //How to loop through and add another card.
-			dealer.dealCardToPlayer(player);
-		case 2:
+			int n = scan.nextInt();
+			switch (n) {
+			case 1:
+				// How to loop through and add another card.
+				dealer.dealCardToPlayer(player);
+				player.showCard();
+				dealer.dealerFaceUpCard();
+				break OUTER;
+			case 2:
+				player.showCard();
+				dealer.dealerFaceUpCard();
+				break OUTER; 
+			default:
+				System.out.println("Not a valid option");
+				break;
+			}
+		}
+			if (player.getValue() > 21) {
+				
+				System.out.println("!!BUST!!");
+			}
+
+	
+		while (dealer.getValue() <= 16) {
 			player.showCard();
+			System.out.println(player.getValue());
+			
+			dealer.dealCardToDealer(dealer);
+			dealer.dealerFaceUpCard();
+		if (player.getValue() < dealer.getValue() || dealer.getValue() == 21) {
+			System.out.println("You Lose!");
+			player.showCard();
+			System.out.println(player.getValue());
+			dealer.dealerCards();
+
+		} else if(dealer.getValue() == 21) {
+			System.out.println("You Lose!");
+			player.showCard();
+			System.out.println(player.getValue());
+			dealer.dealerCards();
+		}
+		else if (player.getValue() > dealer.getValue() || dealer.getValue() > 21) {
+			System.out.println("You Win!");
+			player.showCard();
+			System.out.println(player.getValue());
+			dealer.dealerCards();
 		}
 	}
+		
+}
 
+//	public void keepPlayingOrNot() {
+////		System.out.println("Select 1 to hit or select 2 to stay");
+//		int playerValue = ((Player) player).getValue();
+//		int dealerValue = ((Dealer) dealer).getValue();
+//
+//		int n = scan.nextInt();
+//		while (playerValue < 21) {
+//			if (playerValue < dealerValue) {
+//				System.out.println("Select 1 to hit or select 2 to stay");
+//
+//			} else if (playerValue > dealerValue) {
+//				System.out.println("You Win!");
+//			}
+//		}
+//		while (playerValue > 21) {
+//			System.out.println("!!BUST!!");
+//		}
+//
+////		int playerValue = ((Player) player).getValue();
+////		int dealerValue = ((Dealer) dealer).getValue();
+//		switch (n) {
+//		case 1:
+//			// How to loop through and add another card.
+//			
+//			dealer.dealCardToPlayer(player);
+//			break;
+//		case 2:
+//			player.showCard();
+//			break;
+//		default:
+//			System.out.println("Not a valid option");
+//			break;
+//		}
+//	}
 
 //public void loop() {
 //	Scanner scanner = new Scanner(System.in);

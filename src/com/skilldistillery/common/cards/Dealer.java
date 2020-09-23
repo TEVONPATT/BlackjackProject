@@ -34,15 +34,20 @@ public class Dealer extends Player{
 	}
 
 	public void dealerCards() {
-		bJackHand.toString();
+//		bJackHand.toString();
 		System.out.println("Dealer hand: " + bJackHand.toString());
+		System.out.println("Dealer card value: " + bJackHand.getHandValue());
 	}
 	public void dealerFaceUpCard() {
 		
-		System.out.println("Dealer hand: " + bJackHand.getHandValue() +  " Dealer card faced up: " +
-	bJackHand.cards.get(1).toString());
+		System.out.println("Dealer card faced up: " +
+				bJackHand.cards.get(1).toString());
+		System.out.println("Dealer card value: " + bJackHand.cards.get(1).getValue());
 	}	
-	
+public int getValue() {
+		
+		return bJackHand.getHandValue();
+	}
 		
 		
 //		cards = new ArrayList<>(2);

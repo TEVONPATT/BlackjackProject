@@ -8,22 +8,22 @@ public class BlackjackHand extends Hand {
 	}
 
 	public int getHandValue() {
-		int bustValue = 22;
+//		int bustValue = 22;
 		int value = 0;
 		for (Card card : cards) {
 			value += card.getValue();
 		}
 
-		for (int i = 0; i < bustValue; i++) {
-			return cards.indexOf(i);
-		}
+//		for (int i = 0; i < bustValue; i++) {
+//			return cards.indexOf(i);
+//		}
 		return value;
 
 	}
 
 	public boolean isBlackJack() {
 
-		return false;
+		return getHandValue() == 21;
 	}
 
 }
