@@ -4,7 +4,7 @@
 
 ### The game begins after the player decides to deal cards.
 
-** How to Play:
+How to Play:
 
 #### 1. If the user chooses to deal the cards, then the cards dealt will be shown with the value of them
 * The dealer's face up card will be displayed
